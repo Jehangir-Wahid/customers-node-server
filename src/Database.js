@@ -8,7 +8,7 @@ exports.all_customers = [
         gender: "male",
         address: "Customer, A street, Address",
         contact: "+971 50 000 0000",
-        avatar: "http://localhost:3001/images/customer/customer.png",
+        avatar: "http://localhost:3001/images/customer/customer_1.jpeg",
     },
     {
         id: 2,
