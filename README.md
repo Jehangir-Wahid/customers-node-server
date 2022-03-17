@@ -9,7 +9,11 @@ Tested on a Ubuntu 20.10 server
 
 ### Installation
 
-Clone the repository on your local and goto root directory of the project.
+Clone the repository on your local
+
+    git clone git@github.com:Jehangir-Wahid/customers-node-server.git
+
+Goto root directory of the project.
 
     cd customers-server
 
