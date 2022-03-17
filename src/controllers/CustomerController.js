@@ -1,4 +1,5 @@
-const Customers = require("../Database");
+const mongoose = require("mongoose");
+const Customer = mongoose.model("Customer");
 const { NotFoundError } = require("../customerErrors");
 
 /**
@@ -11,7 +12,7 @@ const { NotFoundError } = require("../customerErrors");
  */
 exports.get_all_customers = async (req, res) => {
     try {
-        const customers = Customers.all_customers;
+        const customers = await Customer.find().all();
         if (!customers) {
             throw new NotFoundError("No customers found.");
         }
@@ -43,15 +44,15 @@ exports.get_all_customers = async (req, res) => {
 exports.get_customer = async (req, res) => {
     try {
         const customerId = req.params.customerId;
+        console.log("Customer ID: ", customerId);
 
-        const customer = Customers.all_customers.filter(
-            (customer) => customer.id == customerId
-        );
-        if (!customer[0]) {
+        const customer = await Customer.findById(customerId);
+        if (!customer) {
             throw new NotFoundError("customer not found.");
         }
+        console.log(customer);
 
-        res.status(200).json(customer[0]);
+        res.status(200).json(customer);
     } catch (error) {
         let message = error.message;
         console.error(error.stack);
