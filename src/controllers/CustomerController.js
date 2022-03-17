@@ -20,7 +20,7 @@ exports.get_all_customers = async (req, res) => {
         res.status(200).json(customers);
     } catch (error) {
         let message = error.message;
-        logger.error(error.stack);
+        console.error(error.stack);
 
         if (error instanceof NotFoundError) {
             res.status(404);
@@ -44,13 +44,11 @@ exports.get_all_customers = async (req, res) => {
 exports.get_customer = async (req, res) => {
     try {
         const customerId = req.params.customerId;
-        console.log("Customer ID: ", customerId);
 
         const customer = await Customer.findById(customerId);
         if (!customer) {
             throw new NotFoundError("customer not found.");
         }
-        console.log(customer);
 
         res.status(200).json(customer);
     } catch (error) {
