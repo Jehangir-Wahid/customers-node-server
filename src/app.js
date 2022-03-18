@@ -13,8 +13,6 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.json());
-app.use(express.static(__dirname + "/public"));
-app.use("/images", express.static("images"));
 app.use("/api", AppRoutes);
 
 const connectionString = process.env.CONNECTION_STRING;
